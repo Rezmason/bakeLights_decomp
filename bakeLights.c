@@ -86,14 +86,15 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 				int32_t var_e0_3 = eax_3;
 				
 				while (true) {
+					float diffuse_color_r = 1f;
+					float diffuse_color_g = 1f;
 					float diffuse_color_b = 1f;
-					float x87_r7_66 = 1f;
-					float x87_r6_79 = 1f;
 					void* ecx_3 = &otherObjects_1[3]->name[edx_3];
 					float ambient_color_r = 1f;
 					float ambient_color_g = 1f;
 					float ambient_color_b = 1f;
 					struct Shader* shader = *(uint32_t*)((char*)ecx_3 + 0x14);
+					// float x87_r6_79 = 1f;
 					
 					if (shader) {
 						float x87_r5_13 = shader->luminance;
@@ -110,8 +111,8 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 							
 							if (*(uint8_t*)((char*)eax_5)[1] & 1) {
 								label_41252d:
-								x87_r7_66 = shader->diffuse_color_r;
-								x87_r6_79 = shader->diffuse_color_g;
+								diffuse_color_r = shader->diffuse_color_r;
+								diffuse_color_g = shader->diffuse_color_g;
 								diffuse_color_b = shader->diffuse_color_b;
 								ambient_color_r = shader->ambient_color_r;
 								ambient_color_g = shader->ambient_color_g;
@@ -208,7 +209,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									
 									if (!(*(uint8_t*)((char*)eax_10)[1] & 1)) {
 										label_412ac7:
-										x87_r6_79 = x87_r2_5;
+										// x87_r6_79 = x87_r2_5;
 									} else {
 										float temp16_1 = light->attenStart;
 										x87_r2_5 - temp16_1;
@@ -226,12 +227,12 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										eax_10 = (x87_r5_56 < temp19_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp19_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp19_1 ? 1 : 0) << 0xe | 0x2800;
 										
 										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
-											x87_r6_79 = x87_r5_56;
+											// x87_r6_79 = x87_r5_56;
 										} else {
 											float x87_r5_87 = x87_r5_56 * light->intensity * var_ec_2;
-											float var_7c_3 = (x87_r5_87 * light->color_g * x87_r6_79);
+											float var_7c_3 = (x87_r5_87 * light->color_g * diffuse_color_g);
 											float x87_r5_89 = x87_r5_87 * light->color_b * diffuse_color_b;
-											vertex[6] = ((x87_r5_87 * light->color_r * x87_r7_66) + vertex[6]);
+											vertex[6] = ((x87_r5_87 * light->color_r * diffuse_color_r) + vertex[6]);
 											vertex[7] = (var_7c_3 + vertex[7]);
 											vertex[8] = (x87_r5_89 + vertex[8]);
 										}
@@ -282,7 +283,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									eax_10 = (x87_r2_12 < temp20_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_12, temp20_1) ? 1 : 0) << 0xa | (x87_r2_12 == temp20_1 ? 1 : 0) << 0xe | 0x1800;
 									
 									if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
-										x87_r6_79 = x87_r3_14;
+										// x87_r6_79 = x87_r3_14;
 									} else {
 										float x87_r5_65 = x87_r3_14 * light->dir_z + x87_r4_46 * light->dir_y + x87_r5_63 * light->dir_x;
 										float var_e8_2 = x87_r5_65;
@@ -315,16 +316,16 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 												}
 												
 												float x87_r5_80 = var_70_1 * light->intensity * var_ec_2;
-												float var_7c_2 = (x87_r5_80 * light->color_g * x87_r6_79);
+												float var_7c_2 = (x87_r5_80 * light->color_g * diffuse_color_g);
 												float x87_r5_82 = x87_r5_80 * light->color_b * diffuse_color_b;
-												vertex[6] = ((x87_r5_80 * light->color_r * x87_r7_66) + vertex[6]);
+												vertex[6] = ((x87_r5_80 * light->color_r * diffuse_color_r) + vertex[6]);
 												vertex[7] = (var_7c_2 + vertex[7]);
 												vertex[8] = (x87_r5_82 + vertex[8]);
 											}
 										}
 									}
 								} else {
-									x87_r6_79 = x87_r5_52;
+									// x87_r6_79 = x87_r5_52;
 									
 									if (type == 2) {
 										x87_r5_56 = var_cc_1 * light->dir_z + var_d0_1 * light->dir_y + var_d4_1 * light->dir_x;
@@ -333,11 +334,11 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										eax_10 = (x87_r5_56 < temp15_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp15_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp15_1 ? 1 : 0) << 0xe | 0x2800;
 										
 										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
-											x87_r6_79 = x87_r5_56;
+											// x87_r6_79 = x87_r5_56;
 										} else {
-											float var_7c_1 = (x87_r5_56 * light->color_g * x87_r6_79);
+											float var_7c_1 = (x87_r5_56 * light->color_g * diffuse_color_g);
 											float var_78_1 = (x87_r5_56 * light->color_b * diffuse_color_b);
-											vertex[6] = (x87_r5_56 * light->color_r * x87_r7_66 + vertex[6]);
+											vertex[6] = (x87_r5_56 * light->color_r * diffuse_color_r + vertex[6]);
 											vertex[7] = (var_7c_1 + vertex[7]);
 											vertex[8] = (var_78_1 + vertex[8]);
 										}
