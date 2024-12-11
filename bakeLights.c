@@ -12,10 +12,10 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 	}
 	
 	if (otherObjects || object->otherObject1) {
-		object->scale_x
-		long double x87_r6_1 = (long double)object->scale_y;
-		long double x87_r5_1 = (long double)object->rot_x;
-		long double st0_1;
+		object->scale_x;
+		float x87_r6_1 = object->scale_y;
+		float x87_r5_1 = object->rot_x;
+		float st0_1;
 		bool c2_1;
 		st0_1 = __fcos(x87_r5_1);
 		float scale_z = object->scale_z;
@@ -24,61 +24,61 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 		int32_t var_98_1 = 0;
 		int32_t var_a8_1 = 0;
 		int32_t var_b8_1 = 0;
-		float var_dc_1 = (float)st0_1;
-		long double st0_2;
+		float var_dc_1 = st0_1;
+		float st0_2;
 		bool c2_2;
 		st0_2 = __fsin(x87_r5_1);
-		float var_e4_1 = (float)st0_2;
-		long double x87_r5_4 = (long double)0f - (long double)0f;
-		float var_c0_1 = (float)x87_r5_4;
-		float var_b0_1 = (float)((long double)var_dc_1 * x87_r6_1 - (long double)0f);
-		float var_a0_1 = (float)((long double)0f - (long double)var_e4_1 * (long double)scale_z);
-		float var_90_1 = (float)x87_r5_4;
-		long double x87_r6_3 = (long double)0f + (long double)0f;
-		float var_bc_1 = (float)x87_r6_3;
-		float var_ac_1 = (float)((long double)(float)x87_r6_1 * (long double)var_e4_1 + (long double)0f);
-		float var_9c_2 = (float)((long double)var_dc_1 * (long double)scale_z + (long double)0f);
-		float var_8c_1 = (float)x87_r6_3;
-		long double st0_3;
+		float var_e4_1 = st0_2;
+		float x87_r5_4 = 0f - 0f;
+		float var_c0_1 = x87_r5_4;
+		float var_b0_1 = (var_dc_1 * x87_r6_1 - 0f);
+		float var_a0_1 = (0f - var_e4_1 * scale_z);
+		float var_90_1 = x87_r5_4;
+		float x87_r6_3 = 0f + 0f;
+		float var_bc_1 = x87_r6_3;
+		float var_ac_1 = (x87_r6_1 * var_e4_1 + 0f);
+		float var_9c_2 = (var_dc_1 * scale_z + 0f);
+		float var_8c_1 = x87_r6_3;
+		float st0_3;
 		bool c2_3;
-		st0_3 = __fcos((long double)rot_y);
-		float var_e8_1 = (float)st0_3;
-		long double st0_4;
+		st0_3 = __fcos(rot_y);
+		float var_e8_1 = st0_3;
+		float st0_4;
 		bool c2_4;
-		st0_4 = __fsin((long double)rot_y);
-		float var_ec_1 = (float)st0_4;
-		float var_c4 = (float)((long double)var_bc_1 * (long double)var_ec_1 + (long double)var_e8_1 * x87_r6_1);
-		long double x87_r7_3 = (long double)0f;
-		float var_b4_1 = (float)((long double)var_ac_1 * (long double)var_ec_1 + x87_r7_3);
-		float var_a4_1 = (float)((long double)var_ec_1 * (long double)var_9c_2 + x87_r7_3);
-		float var_94_1 = (float)((long double)var_8c_1 * (long double)var_ec_1 + x87_r7_3);
-		float var_bc_2 = (float)((long double)var_bc_1 * (long double)var_e8_1 - (long double)(float)x87_r6_1 * (long double)var_ec_1);
-		long double x87_r7_7 = (long double)0f;
+		st0_4 = __fsin(rot_y);
+		float var_ec_1 = st0_4;
+		float var_c4 = (var_bc_1 * var_ec_1 + var_e8_1 * x87_r6_1);
+		float x87_r7_3 = 0f;
+		float var_b4_1 = (var_ac_1 * var_ec_1 + x87_r7_3);
+		float var_a4_1 = (var_ec_1 * var_9c_2 + x87_r7_3);
+		float var_94_1 = (var_8c_1 * var_ec_1 + x87_r7_3);
+		float var_bc_2 = (var_bc_1 * var_e8_1 - x87_r6_1 * var_ec_1);
+		float x87_r7_7 = 0f;
 		float scale_z_1 = scale_z;
-		float var_ac_2 = (float)((long double)var_ac_1 * (long double)var_e8_1 - x87_r7_7);
-		float var_9c_3 = (float)((long double)var_e8_1 * (long double)var_9c_2 - x87_r7_7);
-		float var_8c_2 = (float)((long double)var_8c_1 * (long double)var_e8_1 - x87_r7_7);
-		sub_412b20(&var_c4, (float)(long double)object->rot_z);
+		float var_ac_2 = (var_ac_1 * var_e8_1 - x87_r7_7);
+		float var_9c_3 = (var_e8_1 * var_9c_2 - x87_r7_7);
+		float var_8c_2 = (var_8c_1 * var_e8_1 - x87_r7_7);
+		sub_412b20(&var_c4, object->rot_z);
 		int32_t var_60_1 = 0;
-		float var_94_2 = (float)((long double)object->trans_x + (long double)var_94_1);
-		float var_90_2 = (float)((long double)object->trans_y + (long double)var_90_1);
-		float var_8c_3 = (float)((long double)object->trans_z + (long double)var_8c_2);
-		float var_6c = (float)((long double)var_c0_1 * (long double)arg4[4] + (long double)var_bc_2 * (long double)arg4[8] + (long double)var_c4 * (long double)*(uint32_t*)arg4);
-		float var_68_1 = (float)((long double)var_c0_1 * (long double)arg4[5] + (long double)var_bc_2 * (long double)arg4[9] + (long double)var_c4 * (long double)arg4[1]);
-		float var_64_1 = (float)((long double)var_c0_1 * (long double)arg4[6] + (long double)var_bc_2 * (long double)arg4[0xa] + (long double)var_c4 * (long double)arg4[2]);
-		float var_5c_1 = (float)((long double)var_b4_1 * (long double)*(uint32_t*)arg4 + (long double)var_ac_2 * (long double)arg4[8] + (long double)var_b0_1 * (long double)arg4[4]);
-		float var_58_1 = (float)((long double)var_ac_2 * (long double)arg4[9] + (long double)var_b4_1 * (long double)arg4[1] + (long double)var_b0_1 * (long double)arg4[5]);
+		float var_94_2 = (object->trans_x + var_94_1);
+		float var_90_2 = (object->trans_y + var_90_1);
+		float var_8c_3 = (object->trans_z + var_8c_2);
+		float var_6c = (var_c0_1 * arg4[4] + var_bc_2 * arg4[8] + var_c4 * arg4[0]);
+		float var_68_1 = (var_c0_1 * arg4[5] + var_bc_2 * arg4[9] + var_c4 * arg4[1]);
+		float var_64_1 = (var_c0_1 * arg4[6] + var_bc_2 * arg4[0xa] + var_c4 * arg4[2]);
+		float var_5c_1 = (var_b4_1 * arg4[0] + var_ac_2 * arg4[8] + var_b0_1 * arg4[4]);
+		float var_58_1 = (var_ac_2 * arg4[9] + var_b4_1 * arg4[1] + var_b0_1 * arg4[5]);
 		struct Object* otherObject1 = object->otherObject1;
 		int32_t var_50_1 = 0;
 		int32_t var_40_1 = 0;
 		int32_t var_30_1 = 0x3f800000;
-		float var_54_1 = (float)((long double)var_b0_1 * (long double)arg4[6] + (long double)var_ac_2 * (long double)arg4[0xa] + (long double)var_b4_1 * (long double)arg4[2]);
-		float var_4c_1 = (float)((long double)var_a4_1 * (long double)*(uint32_t*)arg4 + (long double)var_a0_1 * (long double)arg4[4] + (long double)var_9c_3 * (long double)arg4[8]);
-		float var_48_1 = (float)((long double)var_a0_1 * (long double)arg4[5] + (long double)var_a4_1 * (long double)arg4[1] + (long double)var_9c_3 * (long double)arg4[9]);
-		float var_44_1 = (float)((long double)var_9c_3 * (long double)arg4[0xa] + (long double)var_a0_1 * (long double)arg4[6] + (long double)var_a4_1 * (long double)arg4[2]);
-		float var_3c_1 = (float)((long double)var_94_2 * (long double)*(uint32_t*)arg4 + (long double)var_90_2 * (long double)arg4[4] + (long double)var_8c_3 * (long double)arg4[8] + (long double)arg4[0xc]);
-		float var_38_1 = (float)((long double)var_90_2 * (long double)arg4[5] + (long double)var_8c_3 * (long double)arg4[9] + (long double)var_94_2 * (long double)arg4[1] + (long double)arg4[0xd]);
-		float var_34_1 = (float)((long double)var_90_2 * (long double)arg4[6] + (long double)var_8c_3 * (long double)arg4[0xa] + (long double)var_94_2 * (long double)arg4[2] + (long double)arg4[0xe]);
+		float var_54_1 = (var_b0_1 * arg4[6] + var_ac_2 * arg4[0xa] + var_b4_1 * arg4[2]);
+		float var_4c_1 = (var_a4_1 * arg4[0] + var_a0_1 * arg4[4] + var_9c_3 * arg4[8]);
+		float var_48_1 = (var_a0_1 * arg4[5] + var_a4_1 * arg4[1] + var_9c_3 * arg4[9]);
+		float var_44_1 = (var_9c_3 * arg4[0xa] + var_a0_1 * arg4[6] + var_a4_1 * arg4[2]);
+		float var_3c_1 = (var_94_2 * arg4[0] + var_90_2 * arg4[4] + var_8c_3 * arg4[8] + arg4[0xc]);
+		float var_38_1 = (var_90_2 * arg4[5] + var_8c_3 * arg4[9] + var_94_2 * arg4[1] + arg4[0xd]);
+		float var_34_1 = (var_90_2 * arg4[6] + var_8c_3 * arg4[0xa] + var_94_2 * arg4[2] + arg4[0xe]);
 		
 		if (otherObject1) {
 			bakeLights(scxData, otherObject1, light, &var_6c);
@@ -89,7 +89,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 		if (otherObjects_1) {
 			void* eax_2;
 			int32_t ecx_1;
-			eax_2 = sub_418b7d(*(uint32_t*)otherObjects_1, 4);
+			eax_2 = sub_418b7d(otherObjects_1[0], 4);
 			int32_t eax_3 = otherObjects_1[1];
 			
 			if (eax_3 - 1 >= 0) {
@@ -99,8 +99,8 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 				
 				while (true) {
 					float diffuse_color_b = 1f;
-					long double x87_r7_66 = (long double)1f;
-					long double x87_r6_79 = (long double)1f;
+					float x87_r7_66 = 1f;
+					float x87_r6_79 = 1f;
 					void* ecx_3 = &otherObjects_1[3]->name[edx_3];
 					float ambient_color_r = 1f;
 					float ambient_color_g = 1f;
@@ -108,22 +108,22 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 					struct Shader* shader = *(uint32_t*)((char*)ecx_3 + 0x14);
 					
 					if (shader) {
-						long double x87_r5_13 = (long double)shader->luminance*(int32_t*)((char*)shader + 8);
-						long double temp2_1 = (long double)0f;
+						float x87_r5_13 = shader->luminance;
+						float temp2_1 = 0f;
 						x87_r5_13 - temp2_1;
 						int32_t eax_5;
 						eax_5 = (x87_r5_13 < temp2_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_13, temp2_1) ? 1 : 0) << 0xa | (x87_r5_13 == temp2_1 ? 1 : 0) << 0xe | 0x3000;
 						
 						if (*(uint8_t*)((char*)eax_5)[1] & 0x40) {
-							long double x87_r5_14 = (long double)shader->blendAmount*(int32_t*)((char*)shader + 0xc);
-							long double temp3_1 = (long double)1f;
+							float x87_r5_14 = shader->blendAmount;
+							float temp3_1 = 1f;
 							x87_r5_14 - temp3_1;
 							eax_5 = (x87_r5_14 < temp3_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_14, temp3_1) ? 1 : 0) << 0xa | (x87_r5_14 == temp3_1 ? 1 : 0) << 0xe | 0x3000;
 							
 							if (*(uint8_t*)((char*)eax_5)[1] & 1) {
 								label_41252d:
-								x87_r7_66 = (long double)shader->diffuse_color_r;
-								x87_r6_79 = (long double)shader->diffuse_color_g;
+								x87_r7_66 = shader->diffuse_color_r;
+								x87_r6_79 = shader->diffuse_color_g;
 								diffuse_color_b = shader->diffuse_color_b;
 								ambient_color_r = shader->ambient_color_r;
 								ambient_color_g = shader->ambient_color_g;
@@ -157,64 +157,64 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 							int32_t type = light->type;
 							
 							if (type != 3) {
-								float var_d4_1 = (float)((long double)var_4c_1 * (long double)vertex[5] + (long double)var_5c_1 * (long double)vertex[4] + (long double)var_6c * (long double)vertex[3]);
-								float var_d0_1 = (float)((long double)var_48_1 * (long double)vertex[5] + (long double)var_58_1 * (long double)vertex[4] + (long double)var_68_1 * (long double)vertex[3]);
-								float var_cc_1 = (float)((long double)var_44_1 * (long double)vertex[5] + (long double)var_54_1 * (long double)vertex[4] + (long double)var_64_1 * (long double)vertex[3]);
-								long double x87_r5_36 = (long double)object->scale_x;
-								long double temp6_1 = (long double)0f;
+								float var_d4_1 = (var_4c_1 * vertex[5] + var_5c_1 * vertex[4] + var_6c * vertex[3]);
+								float var_d0_1 = (var_48_1 * vertex[5] + var_58_1 * vertex[4] + var_68_1 * vertex[3]);
+								float var_cc_1 = (var_44_1 * vertex[5] + var_54_1 * vertex[4] + var_64_1 * vertex[3]);
+								float x87_r5_36 = object->scale_x;
+								float temp6_1 = 0f;
 								x87_r5_36 - temp6_1;
 								eax_10 = (x87_r5_36 < temp6_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_36, temp6_1) ? 1 : 0) << 0xa | (x87_r5_36 == temp6_1 ? 1 : 0) << 0xe | 0x3000;
 								
 								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
-									var_d4_1 = (float)((long double)var_d4_1 / fabsl((long double)object->scale_x));
+									var_d4_1 = (var_d4_1 / fabsl(object->scale_x));
 								}
 								
-								long double x87_r5_40 = (long double)object->scale_y;
-								long double temp7_1 = (long double)0f;
+								float x87_r5_40 = object->scale_y;
+								float temp7_1 = 0f;
 								x87_r5_40 - temp7_1;
 								eax_10 = (x87_r5_40 < temp7_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_40, temp7_1) ? 1 : 0) << 0xa | (x87_r5_40 == temp7_1 ? 1 : 0) << 0xe | 0x3000;
 								
 								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
-									var_d0_1 = (float)((long double)var_d0_1 / fabsl((long double)object->scale_y));
+									var_d0_1 = (var_d0_1 / fabsl(object->scale_y));
 								}
 								
-								long double x87_r5_44 = (long double)object->scale_z;
-								long double temp8_1 = (long double)0f;
+								float x87_r5_44 = object->scale_z;
+								float temp8_1 = 0f;
 								x87_r5_44 - temp8_1;
 								eax_10 = (x87_r5_44 < temp8_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_44, temp8_1) ? 1 : 0) << 0xa | (x87_r5_44 == temp8_1 ? 1 : 0) << 0xe | 0x3000;
 								
 								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
-									var_cc_1 = (float)((long double)var_cc_1 / fabsl((long double)object->scale_z));
+									var_cc_1 = (var_cc_1 / fabsl(object->scale_z));
 								}
 								
-								long double x87_r5_52 = (long double)var_6c * (long double)*(uint32_t*)vertex + (long double)var_4c_1 * (long double)vertex[2] + (long double)var_5c_1 * (long double)vertex[1] + (long double)var_3c_1;
-								float var_18_1 = (float)((long double)var_68_1 * (long double)*(uint32_t*)vertex + (long double)var_48_1 * (long double)vertex[2] + (long double)var_58_1 * (long double)vertex[1] + (long double)var_38_1);
-								float var_14_1 = (float)((long double)var_64_1 * (long double)*(uint32_t*)vertex + (long double)var_44_1 * (long double)vertex[2] + (long double)var_54_1 * (long double)vertex[1] + (long double)var_34_1);
-								long double x87_r2_5;
-								long double x87_r5_56;
+								float x87_r5_52 = var_6c * vertex[0] + var_4c_1 * vertex[2] + var_5c_1 * vertex[1] + var_3c_1;
+								float var_18_1 = (var_68_1 * vertex[0] + var_48_1 * vertex[2] + var_58_1 * vertex[1] + var_38_1);
+								float var_14_1 = (var_64_1 * vertex[0] + var_44_1 * vertex[2] + var_54_1 * vertex[1] + var_34_1);
+								float x87_r2_5;
+								float x87_r5_56;
 								
 								if (!type) {
-									long double x87_r5_84 = (long double)light->pos_x - x87_r5_52;
-									long double x87_r4_64 = (long double)light->pos_y - (long double)var_18_1;
-									long double x87_r3_19 = (long double)light->pos_z - (long double)var_14_1;
-									long double x87_r2_16 = x87_r3_19 * x87_r3_19 + x87_r4_64 * x87_r4_64 + x87_r5_84 * x87_r5_84;
-									long double temp10_1 = (long double)0f;
+									float x87_r5_84 = light->pos_x - x87_r5_52;
+									float x87_r4_64 = light->pos_y - var_18_1;
+									float x87_r3_19 = light->pos_z - var_14_1;
+									float x87_r2_16 = x87_r3_19 * x87_r3_19 + x87_r4_64 * x87_r4_64 + x87_r5_84 * x87_r5_84;
+									float temp10_1 = 0f;
 									x87_r2_16 - temp10_1;
 									eax_10 = (x87_r2_16 < temp10_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_16, temp10_1) ? 1 : 0) << 0xa | (x87_r2_16 == temp10_1 ? 1 : 0) << 0xe | 0x1000;
-									long double x87_r3_20;
+									float x87_r3_20;
 									
 									if (*(uint8_t*)((char*)eax_10)[1] & 0x40) {
 										x87_r3_20 = x87_r2_16;
-										x87_r2_5 = (long double)0f;
+										x87_r2_5 = 0f;
 									} else {
 										x87_r2_5 = sqrtl(x87_r2_16);
-										long double x87_r1_18 = (long double)1f / x87_r2_5;
+										float x87_r1_18 = 1f / x87_r2_5;
 										x87_r5_84 = x87_r5_84 * x87_r1_18;
 										x87_r4_64 = x87_r4_64 * x87_r1_18;
 										x87_r3_20 = x87_r3_19 * x87_r1_18;
 									}
 									
-									long double temp14_1 = (long double)light->attenEnd;
+									float temp14_1 = light->attenEnd;
 									x87_r2_5 - temp14_1;
 									eax_10 = (x87_r2_5 < temp14_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp14_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp14_1 ? 1 : 0) << 0xe | 0x1000;
 									
@@ -222,54 +222,54 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										label_412ac7:
 										x87_r6_79 = x87_r2_5;
 									} else {
-										long double temp16_1 = (long double)light->attenStart;
+										float temp16_1 = light->attenStart;
 										x87_r2_5 - temp16_1;
 										eax_10 = (x87_r2_5 < temp16_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp16_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp16_1 ? 1 : 0) << 0xe | 0x1000;
 										
 										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
 											x87_r3_20 = x87_r2_5;
 										} else {
-											var_ec_2 = (float)((long double)1f - (x87_r2_5 - (long double)light->attenStart) / ((long double)light->attenEnd - (long double)light->attenStart));
+											var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
 										}
 										
-										x87_r5_56 = x87_r3_20 * (long double)var_cc_1 + x87_r4_64 * (long double)var_d0_1 + x87_r5_84 * (long double)var_d4_1;
-										long double temp19_1 = (long double)0f;
+										x87_r5_56 = x87_r3_20 * var_cc_1 + x87_r4_64 * var_d0_1 + x87_r5_84 * var_d4_1;
+										float temp19_1 = 0f;
 										x87_r5_56 - temp19_1;
 										eax_10 = (x87_r5_56 < temp19_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp19_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp19_1 ? 1 : 0) << 0xe | 0x2800;
 										
 										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
 											x87_r6_79 = x87_r5_56;
 										} else {
-											long double x87_r5_87 = x87_r5_56 * (long double)light->intensity * (long double)var_ec_2;
-											float var_7c_3 = (float)(x87_r5_87 * (long double)light->color_g * x87_r6_79);
-											long double x87_r5_89 = x87_r5_87 * (long double)light->color_b * (long double)diffuse_color_b;
-											vertex[6] = (float)((long double)(float)(x87_r5_87 * (long double)light->color_r * x87_r7_66) + (long double)vertex[6]);
-											vertex[7] = (float)((long double)var_7c_3 + (long double)vertex[7]);
-											vertex[8] = (float)(x87_r5_89 + (long double)vertex[8]);
+											float x87_r5_87 = x87_r5_56 * light->intensity * var_ec_2;
+											float var_7c_3 = (x87_r5_87 * light->color_g * x87_r6_79);
+											float x87_r5_89 = x87_r5_87 * light->color_b * diffuse_color_b;
+											vertex[6] = ((x87_r5_87 * light->color_r * x87_r7_66) + vertex[6]);
+											vertex[7] = (var_7c_3 + vertex[7]);
+											vertex[8] = (x87_r5_89 + vertex[8]);
 										}
 									}
 								} else if (type == 1) {
-									long double x87_r5_63 = (long double)light->pos_x - x87_r5_52;
-									long double x87_r4_46 = (long double)light->pos_y - (long double)var_18_1;
-									long double x87_r3_13 = (long double)light->pos_z - (long double)var_14_1;
-									long double x87_r2_4 = x87_r3_13 * x87_r3_13 + x87_r4_46 * x87_r4_46 + x87_r5_63 * x87_r5_63;
-									long double temp12_1 = (long double)0f;
+									float x87_r5_63 = light->pos_x - x87_r5_52;
+									float x87_r4_46 = light->pos_y - var_18_1;
+									float x87_r3_13 = light->pos_z - var_14_1;
+									float x87_r2_4 = x87_r3_13 * x87_r3_13 + x87_r4_46 * x87_r4_46 + x87_r5_63 * x87_r5_63;
+									float temp12_1 = 0f;
 									x87_r2_4 - temp12_1;
 									eax_10 = (x87_r2_4 < temp12_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_4, temp12_1) ? 1 : 0) << 0xa | (x87_r2_4 == temp12_1 ? 1 : 0) << 0xe | 0x1000;
-									long double x87_r3_14;
+									float x87_r3_14;
 									
 									if (*(uint8_t*)((char*)eax_10)[1] & 0x40) {
 										x87_r3_14 = x87_r2_4;
-										x87_r2_5 = (long double)0f;
+										x87_r2_5 = 0f;
 									} else {
 										x87_r2_5 = sqrtl(x87_r2_4);
-										long double x87_r1_6 = (long double)1f / x87_r2_5;
+										float x87_r1_6 = 1f / x87_r2_5;
 										x87_r5_63 = x87_r5_63 * x87_r1_6;
 										x87_r4_46 = x87_r4_46 * x87_r1_6;
 										x87_r3_14 = x87_r3_13 * x87_r1_6;
 									}
 									
-									long double temp17_1 = (long double)light->attenEnd;
+									float temp17_1 = light->attenEnd;
 									x87_r2_5 - temp17_1;
 									eax_10 = (x87_r2_5 < temp17_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp17_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp17_1 ? 1 : 0) << 0xe | 0x1000;
 									
@@ -277,61 +277,61 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										goto label_412ac7;
 									}
 									
-									long double temp18_1 = (long double)light->attenStart;
+									float temp18_1 = light->attenStart;
 									x87_r2_5 - temp18_1;
 									eax_10 = (x87_r2_5 < temp18_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp18_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp18_1 ? 1 : 0) << 0xe | 0x1000;
 									
 									if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
 										x87_r3_14 = x87_r2_5;
 									} else {
-										var_ec_2 = (float)((long double)1f - (x87_r2_5 - (long double)light->attenStart) / ((long double)light->attenEnd - (long double)light->attenStart));
+										var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
 									}
 									
-									long double x87_r2_12 = x87_r3_14 * (long double)var_cc_1 + x87_r4_46 * (long double)var_d0_1 + x87_r5_63 * (long double)var_d4_1;
-									float var_70_1 = (float)x87_r2_12;
-									long double temp20_1 = (long double)0f;
+									float x87_r2_12 = x87_r3_14 * var_cc_1 + x87_r4_46 * var_d0_1 + x87_r5_63 * var_d4_1;
+									float var_70_1 = x87_r2_12;
+									float temp20_1 = 0f;
 									x87_r2_12 - temp20_1;
 									eax_10 = (x87_r2_12 < temp20_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_12, temp20_1) ? 1 : 0) << 0xa | (x87_r2_12 == temp20_1 ? 1 : 0) << 0xe | 0x1800;
 									
 									if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
 										x87_r6_79 = x87_r3_14;
 									} else {
-										long double x87_r5_65 = x87_r3_14 * (long double)light->dir_z + x87_r4_46 * (long double)light->dir_y + x87_r5_63 * (long double)light->dir_x;
-										float var_e8_2 = (float)x87_r5_65;
-										long double temp21_1 = (long double)0f;
+										float x87_r5_65 = x87_r3_14 * light->dir_z + x87_r4_46 * light->dir_y + x87_r5_63 * light->dir_x;
+										float var_e8_2 = x87_r5_65;
+										float temp21_1 = 0f;
 										x87_r5_65 - temp21_1;
 										eax_10 = (x87_r5_65 < temp21_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_65, temp21_1) ? 1 : 0) << 0xa | (x87_r5_65 == temp21_1 ? 1 : 0) << 0xe | 0x3000;
 										
 										if (!(*(uint8_t*)((char*)eax_10)[1] & 0x41)) {
-											long double st0_5;
+											float st0_5;
 											bool c2_16;
-											st0_5 = __fcos((long double)light->penumbra * (long double)0.0174532924f);
-											float var_dc_2 = (float)st0_5;
-											long double st0_6;
+											st0_5 = __fcos(light->penumbra * 0.0174532924f);
+											float var_dc_2 = st0_5;
+											float st0_6;
 											bool c2_17;
-											st0_6 = __fcos((long double)light->umbra * (long double)0.0174532924f);
-											float var_d8_2 = (float)st0_6;
-											long double x87_r5_72 = (long double)var_e8_2;
-											long double temp22_1 = (long double)var_dc_2;
+											st0_6 = __fcos(light->umbra * 0.0174532924f);
+											float var_d8_2 = st0_6;
+											float x87_r5_72 = var_e8_2;
+											float temp22_1 = var_dc_2;
 											x87_r5_72 - temp22_1;
 											eax_10 = (x87_r5_72 < temp22_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_72, temp22_1) ? 1 : 0) << 0xa | (x87_r5_72 == temp22_1 ? 1 : 0) << 0xe | 0x3000;
 											
 											if (!(*(uint8_t*)((char*)eax_10)[1] & 0x41)) {
-												long double x87_r5_73 = (long double)var_e8_2;
-												long double temp23_1 = (long double)var_d8_2;
+												float x87_r5_73 = var_e8_2;
+												float temp23_1 = var_d8_2;
 												x87_r5_73 - temp23_1;
 												eax_10 = (x87_r5_73 < temp23_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_73, temp23_1) ? 1 : 0) << 0xa | (x87_r5_73 == temp23_1 ? 1 : 0) << 0xe | 0x3000;
 												
 												if (*(uint8_t*)((char*)eax_10)[1] & 1) {
-													var_ec_2 = (float)(((long double)var_e8_2 - (long double)var_dc_2) / ((long double)var_d8_2 - (long double)var_dc_2) * (long double)var_ec_2);
+													var_ec_2 = ((var_e8_2 - var_dc_2) / (var_d8_2 - var_dc_2) * var_ec_2);
 												}
 												
-												long double x87_r5_80 = (long double)var_70_1 * (long double)light->intensity * (long double)var_ec_2;
-												float var_7c_2 = (float)(x87_r5_80 * (long double)light->color_g * x87_r6_79);
-												long double x87_r5_82 = x87_r5_80 * (long double)light->color_b * (long double)diffuse_color_b;
-												vertex[6] = (float)((long double)(float)(x87_r5_80 * (long double)light->color_r * x87_r7_66) + (long double)vertex[6]);
-												vertex[7] = (float)((long double)var_7c_2 + (long double)vertex[7]);
-												vertex[8] = (float)(x87_r5_82 + (long double)vertex[8]);
+												float x87_r5_80 = var_70_1 * light->intensity * var_ec_2;
+												float var_7c_2 = (x87_r5_80 * light->color_g * x87_r6_79);
+												float x87_r5_82 = x87_r5_80 * light->color_b * diffuse_color_b;
+												vertex[6] = ((x87_r5_80 * light->color_r * x87_r7_66) + vertex[6]);
+												vertex[7] = (var_7c_2 + vertex[7]);
+												vertex[8] = (x87_r5_82 + vertex[8]);
 											}
 										}
 									}
@@ -339,26 +339,26 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									x87_r6_79 = x87_r5_52;
 									
 									if (type == 2) {
-										x87_r5_56 = (long double)var_cc_1 * (long double)light->dir_z + (long double)var_d0_1 * (long double)light->dir_y + (long double)var_d4_1 * (long double)light->dir_x;
-										long double temp15_1 = (long double)0f;
+										x87_r5_56 = var_cc_1 * light->dir_z + var_d0_1 * light->dir_y + var_d4_1 * light->dir_x;
+										float temp15_1 = 0f;
 										x87_r5_56 - temp15_1;
 										eax_10 = (x87_r5_56 < temp15_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp15_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp15_1 ? 1 : 0) << 0xe | 0x2800;
 										
 										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
 											x87_r6_79 = x87_r5_56;
 										} else {
-											float var_7c_1 = (float)(x87_r5_56 * (long double)light->color_g * x87_r6_79);
-											float var_78_1 = (float)(x87_r5_56 * (long double)light->color_b * (long double)diffuse_color_b);
-											vertex[6] = (float)(x87_r5_56 * (long double)light->color_r * x87_r7_66 + (long double)vertex[6]);
-											vertex[7] = (float)((long double)var_7c_1 + (long double)vertex[7]);
-											vertex[8] = (float)((long double)var_78_1 + (long double)vertex[8]);
+											float var_7c_1 = (x87_r5_56 * light->color_g * x87_r6_79);
+											float var_78_1 = (x87_r5_56 * light->color_b * diffuse_color_b);
+											vertex[6] = (x87_r5_56 * light->color_r * x87_r7_66 + vertex[6]);
+											vertex[7] = (var_7c_1 + vertex[7]);
+											vertex[8] = (var_78_1 + vertex[8]);
 										}
 									}
 								}
 							} else {
-								vertex[6] = (float)((long double)ambient_color_r * (long double)light->color_r + (long double)vertex[6]);
-								vertex[7] = (float)((long double)ambient_color_g * (long double)light->color_g + (long double)vertex[7]);
-								vertex[8] = (float)((long double)ambient_color_b * (long double)light->color_b + (long double)vertex[8]);
+								vertex[6] = (ambient_color_r * light->color_r + vertex[6]);
+								vertex[7] = (ambient_color_g * light->color_g + vertex[7]);
+								vertex[8] = (ambient_color_b * light->color_b + vertex[8]);
 							}
 						}
 						
