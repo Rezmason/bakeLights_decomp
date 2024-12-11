@@ -1,75 +1,19 @@
-void bakeLights(int32_t scxData, struct Object* object, struct Light* light, float* arg4) {
+void bakeLights(int32_t scxData, struct Object* object, struct Light* light, float* parentTransform) {
 
 	struct Object** otherObjects = object->otherObjects;
 	struct Object* otherObject2 = object->otherObject2;
 	
 	if (otherObject2) {
-		bakeLights(scxData, otherObject2, light, arg4);
+		bakeLights(scxData, otherObject2, light, parentTransform);
 	}
 	
 	if (otherObjects || object->otherObject1) {
-		object->scale_x;
-		float x87_r6_1 = object->scale_y;
-		float x87_r5_1 = object->rot_x;
-		float st0_1;
-		bool c2_1;
-		st0_1 = __fcos(x87_r5_1);
-		float scale_z = object->scale_z;
-		float rot_y = object->rot_y;
-		float var_dc_1 = st0_1;
-		float st0_2;
-		bool c2_2;
-		st0_2 = __fsin(x87_r5_1);
-		float var_e4_1 = st0_2;
-		float x87_r5_4 = 0f - 0f;
-		float var_c0_1 = x87_r5_4;
-		float var_b0_1 = (var_dc_1 * x87_r6_1 - 0f);
-		float var_a0_1 = (0f - var_e4_1 * scale_z);
-		float var_90_1 = x87_r5_4;
-		float x87_r6_3 = 0f + 0f;
-		float var_bc_1 = x87_r6_3;
-		float var_ac_1 = (x87_r6_1 * var_e4_1 + 0f);
-		float var_9c_2 = (var_dc_1 * scale_z + 0f);
-		float var_8c_1 = x87_r6_3;
-		float st0_3;
-		bool c2_3;
-		st0_3 = __fcos(rot_y);
-		float var_e8_1 = st0_3;
-		float st0_4;
-		bool c2_4;
-		st0_4 = __fsin(rot_y);
-		float var_ec_1 = st0_4;
-		float var_c4 = (var_bc_1 * var_ec_1 + var_e8_1 * x87_r6_1);
-		float x87_r7_3 = 0f;
-		float var_b4_1 = (var_ac_1 * var_ec_1 + x87_r7_3);
-		float var_a4_1 = (var_ec_1 * var_9c_2 + x87_r7_3);
-		float var_94_1 = (var_8c_1 * var_ec_1 + x87_r7_3);
-		float var_bc_2 = (var_bc_1 * var_e8_1 - x87_r6_1 * var_ec_1);
-		float x87_r7_7 = 0f;
-		float scale_z_1 = scale_z;
-		float var_ac_2 = (var_ac_1 * var_e8_1 - x87_r7_7);
-		float var_9c_3 = (var_e8_1 * var_9c_2 - x87_r7_7);
-		float var_8c_2 = (var_8c_1 * var_e8_1 - x87_r7_7);
-		sub_412b20(&var_c4, object->rot_z);
-		float var_94_2 = (object->trans_x + var_94_1);
-		float var_90_2 = (object->trans_y + var_90_1);
-		float var_8c_3 = (object->trans_z + var_8c_2);
-		float var_6c = (var_c0_1 * arg4[4] + var_bc_2 * arg4[8] + var_c4 * arg4[0]);
-		float var_68_1 = (var_c0_1 * arg4[5] + var_bc_2 * arg4[9] + var_c4 * arg4[1]);
-		float var_64_1 = (var_c0_1 * arg4[6] + var_bc_2 * arg4[0xa] + var_c4 * arg4[2]);
-		float var_5c_1 = (var_b4_1 * arg4[0] + var_ac_2 * arg4[8] + var_b0_1 * arg4[4]);
-		float var_58_1 = (var_ac_2 * arg4[9] + var_b4_1 * arg4[1] + var_b0_1 * arg4[5]);
-		struct Object* otherObject1 = object->otherObject1;
-		float var_54_1 = (var_b0_1 * arg4[6] + var_ac_2 * arg4[0xa] + var_b4_1 * arg4[2]);
-		float var_4c_1 = (var_a4_1 * arg4[0] + var_a0_1 * arg4[4] + var_9c_3 * arg4[8]);
-		float var_48_1 = (var_a0_1 * arg4[5] + var_a4_1 * arg4[1] + var_9c_3 * arg4[9]);
-		float var_44_1 = (var_9c_3 * arg4[0xa] + var_a0_1 * arg4[6] + var_a4_1 * arg4[2]);
-		float var_3c_1 = (var_94_2 * arg4[0] + var_90_2 * arg4[4] + var_8c_3 * arg4[8] + arg4[0xc]);
-		float var_38_1 = (var_90_2 * arg4[5] + var_8c_3 * arg4[9] + var_94_2 * arg4[1] + arg4[0xd]);
-		float var_34_1 = (var_90_2 * arg4[6] + var_8c_3 * arg4[0xa] + var_94_2 * arg4[2] + arg4[0xe]);
+
+		float transform[16];
+		concatenateTransform(&transform, &parentTransform, &object);
 		
 		if (otherObject1) {
-			bakeLights(scxData, otherObject1, light, &var_6c);
+			bakeLights(scxData, otherObject1, light, &transform);
 		}
 		
 		struct Object** otherObjects_1 = otherObjects;
@@ -146,16 +90,16 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 							int32_t type = light->type;
 							
 							if (type != 3) {
-								float var_d4_1 = (var_4c_1 * vertex[5] + var_5c_1 * vertex[4] + var_6c * vertex[3]);
-								float var_d0_1 = (var_48_1 * vertex[5] + var_58_1 * vertex[4] + var_68_1 * vertex[3]);
-								float var_cc_1 = (var_44_1 * vertex[5] + var_54_1 * vertex[4] + var_64_1 * vertex[3]);
+								float vertexWorldNormal[3];
+								transformNormalToWorld(&transform, &vertex[3], &vertexWorldNormal);
+
 								float x87_r5_36 = object->scale_x;
 								float temp6_1 = 0f;
 								x87_r5_36 - temp6_1;
 								eax_10 = (x87_r5_36 < temp6_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_36, temp6_1) ? 1 : 0) << 0xa | (x87_r5_36 == temp6_1 ? 1 : 0) << 0xe | 0x3000;
 								
 								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
-									var_d4_1 = (var_d4_1 / fabsl(object->scale_x));
+									vertexWorldNormal[0] = (vertexWorldNormal[0] / fabsl(object->scale_x));
 								}
 								
 								float x87_r5_40 = object->scale_y;
@@ -164,7 +108,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 								eax_10 = (x87_r5_40 < temp7_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_40, temp7_1) ? 1 : 0) << 0xa | (x87_r5_40 == temp7_1 ? 1 : 0) << 0xe | 0x3000;
 								
 								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
-									var_d0_1 = (var_d0_1 / fabsl(object->scale_y));
+									vertexWorldNormal[1] = (vertexWorldNormal[1] / fabsl(object->scale_y));
 								}
 								
 								float x87_r5_44 = object->scale_z;
@@ -173,19 +117,19 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 								eax_10 = (x87_r5_44 < temp8_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_44, temp8_1) ? 1 : 0) << 0xa | (x87_r5_44 == temp8_1 ? 1 : 0) << 0xe | 0x3000;
 								
 								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
-									var_cc_1 = (var_cc_1 / fabsl(object->scale_z));
+									vertexWorldNormal[2] = (vertexWorldNormal[2] / fabsl(object->scale_z));
 								}
 								
-								float x87_r5_52 = var_6c * vertex[0] + var_4c_1 * vertex[2] + var_5c_1 * vertex[1] + var_3c_1;
-								float var_18_1 = (var_68_1 * vertex[0] + var_48_1 * vertex[2] + var_58_1 * vertex[1] + var_38_1);
-								float var_14_1 = (var_64_1 * vertex[0] + var_44_1 * vertex[2] + var_54_1 * vertex[1] + var_34_1);
+								float vertexWorldPosition[3];
+								transformPositionToWorld(&transform, &vertex[0], &vertexWorldPosition);
+
 								float x87_r2_5;
 								float x87_r5_56;
 								
 								if (!type) {
-									float x87_r5_84 = light->pos_x - x87_r5_52;
-									float x87_r4_64 = light->pos_y - var_18_1;
-									float x87_r3_19 = light->pos_z - var_14_1;
+									float x87_r5_84 = light->pos_x - vertexWorldPosition[0];
+									float x87_r4_64 = light->pos_y - vertexWorldPosition[1];
+									float x87_r3_19 = light->pos_z - vertexWorldPosition[2];
 									float x87_r2_16 = x87_r3_19 * x87_r3_19 + x87_r4_64 * x87_r4_64 + x87_r5_84 * x87_r5_84;
 									float temp10_1 = 0f;
 									x87_r2_16 - temp10_1;
@@ -221,7 +165,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 											var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
 										}
 										
-										x87_r5_56 = x87_r3_20 * var_cc_1 + x87_r4_64 * var_d0_1 + x87_r5_84 * var_d4_1;
+										x87_r5_56 = x87_r3_20 * vertexWorldNormal[2] + x87_r4_64 * vertexWorldNormal[1] + x87_r5_84 * vertexWorldNormal[0];
 										float temp19_1 = 0f;
 										x87_r5_56 - temp19_1;
 										eax_10 = (x87_r5_56 < temp19_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp19_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp19_1 ? 1 : 0) << 0xe | 0x2800;
@@ -238,9 +182,9 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										}
 									}
 								} else if (type == 1) {
-									float x87_r5_63 = light->pos_x - x87_r5_52;
-									float x87_r4_46 = light->pos_y - var_18_1;
-									float x87_r3_13 = light->pos_z - var_14_1;
+									float x87_r5_63 = light->pos_x - vertexWorldPosition[0];
+									float x87_r4_46 = light->pos_y - vertexWorldPosition[1];
+									float x87_r3_13 = light->pos_z - vertexWorldPosition[2];
 									float x87_r2_4 = x87_r3_13 * x87_r3_13 + x87_r4_46 * x87_r4_46 + x87_r5_63 * x87_r5_63;
 									float temp12_1 = 0f;
 									x87_r2_4 - temp12_1;
@@ -276,7 +220,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
 									}
 									
-									float x87_r2_12 = x87_r3_14 * var_cc_1 + x87_r4_46 * var_d0_1 + x87_r5_63 * var_d4_1;
+									float x87_r2_12 = x87_r3_14 * vertexWorldNormal[2] + x87_r4_46 * vertexWorldNormal[1] + x87_r5_63 * vertexWorldNormal[0];
 									float var_70_1 = x87_r2_12;
 									float temp20_1 = 0f;
 									x87_r2_12 - temp20_1;
@@ -325,10 +269,10 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										}
 									}
 								} else {
-									// x87_r6_79 = x87_r5_52;
+									// x87_r6_79 = vertexWorldPosition[0];
 									
 									if (type == 2) {
-										x87_r5_56 = var_cc_1 * light->dir_z + var_d0_1 * light->dir_y + var_d4_1 * light->dir_x;
+										x87_r5_56 = vertexWorldNormal[2] * light->dir_z + vertexWorldNormal[1] * light->dir_y + vertexWorldNormal[0] * light->dir_x;
 										float temp15_1 = 0f;
 										x87_r5_56 - temp15_1;
 										eax_10 = (x87_r5_56 < temp15_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp15_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp15_1 ? 1 : 0) << 0xe | 0x2800;
