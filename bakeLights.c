@@ -2,10 +2,6 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 
 	struct Object** otherObjects = object->otherObjects;
 	struct Object* otherObject2 = object->otherObject2;
-	int32_t var_60 = 0;
-	int32_t var_50 = 0;
-	int32_t var_40 = 0;
-	int32_t var_30 = 0x3f800000;
 	
 	if (otherObject2) {
 		bakeLights(scxData, otherObject2, light, arg4);
@@ -20,10 +16,6 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 		st0_1 = __fcos(x87_r5_1);
 		float scale_z = object->scale_z;
 		float rot_y = object->rot_y;
-		int32_t var_88_1 = 0x3f800000;
-		int32_t var_98_1 = 0;
-		int32_t var_a8_1 = 0;
-		int32_t var_b8_1 = 0;
 		float var_dc_1 = st0_1;
 		float st0_2;
 		bool c2_2;
@@ -59,7 +51,6 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 		float var_9c_3 = (var_e8_1 * var_9c_2 - x87_r7_7);
 		float var_8c_2 = (var_8c_1 * var_e8_1 - x87_r7_7);
 		sub_412b20(&var_c4, object->rot_z);
-		int32_t var_60_1 = 0;
 		float var_94_2 = (object->trans_x + var_94_1);
 		float var_90_2 = (object->trans_y + var_90_1);
 		float var_8c_3 = (object->trans_z + var_8c_2);
@@ -69,9 +60,6 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 		float var_5c_1 = (var_b4_1 * arg4[0] + var_ac_2 * arg4[8] + var_b0_1 * arg4[4]);
 		float var_58_1 = (var_ac_2 * arg4[9] + var_b4_1 * arg4[1] + var_b0_1 * arg4[5]);
 		struct Object* otherObject1 = object->otherObject1;
-		int32_t var_50_1 = 0;
-		int32_t var_40_1 = 0;
-		int32_t var_30_1 = 0x3f800000;
 		float var_54_1 = (var_b0_1 * arg4[6] + var_ac_2 * arg4[0xa] + var_b4_1 * arg4[2]);
 		float var_4c_1 = (var_a4_1 * arg4[0] + var_a0_1 * arg4[4] + var_9c_3 * arg4[8]);
 		float var_48_1 = (var_a0_1 * arg4[5] + var_a4_1 * arg4[1] + var_9c_3 * arg4[9]);
