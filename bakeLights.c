@@ -41,20 +41,13 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 					
 					if (shader) {
 						if (shader->luminance == 0f) {
-							if (shader->blendAmount < 1f) { // •
-								label_41252d:
+							if (shader->blendAmount < 1f || shader->texture_file_name[0] == 0) {
 								diffuse_color_r = shader->diffuse_color_r;
 								diffuse_color_g = shader->diffuse_color_g;
 								diffuse_color_b = shader->diffuse_color_b;
 								ambient_color_r = shader->ambient_color_r;
 								ambient_color_g = shader->ambient_color_g;
 								ambient_color_b = shader->ambient_color_b;
-							} else {
-								eax_5 = shader->texture_file_name[0];
-								
-								if (!eax_5) {
-									goto label_41252d;
-								}
 							}
 						}
 					}
@@ -110,10 +103,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										x87_r3_20 = x87_r3_19 * x87_r1_18;
 									}
 									
-									if (!(x87_r2_5 < light->attenEnd)) { // •
-										label_412ac7:
-										// x87_r6_79 = x87_r2_5;
-									} else {
+									if (x87_r2_5 < light->attenEnd) {
 										if (x87_r2_5 <= light->attenStart) { // •
 											x87_r3_20 = x87_r2_5;
 										} else {
@@ -146,36 +136,35 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										x87_r3_14 = x87_r3_13 * x87_r1_6;
 									}
 									
-									if (!(x87_r2_5 < light->attenEnd)) { // •
-										goto label_412ac7;
-									}
-									
-									if (x87_r2_5 <= light->attenStart) { // •
-										x87_r3_14 = x87_r2_5;
-									} else {
-										var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
-									}
-									
-									float x87_r2_12 = x87_r3_14 * vertexWorldNormal[2] + x87_r4_46 * vertexWorldNormal[1] + x87_r5_63 * vertexWorldNormal[0];
-									float var_70_1 = x87_r2_12;
-									if (x87_r2_12 > 0f) {
-										float x87_r5_65 = x87_r3_14 * light->dir_z + x87_r4_46 * light->dir_y + x87_r5_63 * light->dir_x;
-										float var_e8_2 = x87_r5_65;
-										if (x87_r5_65 > 0f) {
-											float var_dc_2 = __fcos(light->penumbra * PI / 180f);
-											float var_d8_2 = __fcos(light->umbra * PI / 180f);
-											if (var_e8_2 > var_dc_2) {
-												if (var_e8_2 < var_d8_2) { // •
-													var_ec_2 = ((var_e8_2 - var_dc_2) / (var_d8_2 - var_dc_2) * var_ec_2);
+									if (x87_r2_5 < light->attenEnd) {
+										if (x87_r2_5 <= light->attenStart) { // •
+											x87_r3_14 = x87_r2_5;
+										} else {
+											var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
+										}
+										
+										float x87_r2_12 = x87_r3_14 * vertexWorldNormal[2] + x87_r4_46 * vertexWorldNormal[1] + x87_r5_63 * vertexWorldNormal[0];
+										float var_70_1 = x87_r2_12;
+										if (x87_r2_12 > 0f) {
+											float x87_r5_65 = x87_r3_14 * light->dir_z + x87_r4_46 * light->dir_y + x87_r5_63 * light->dir_x;
+											float var_e8_2 = x87_r5_65;
+											if (x87_r5_65 > 0f) {
+												float var_dc_2 = __fcos(light->penumbra * PI / 180f);
+												float var_d8_2 = __fcos(light->umbra * PI / 180f);
+												if (var_e8_2 > var_dc_2) {
+													if (var_e8_2 < var_d8_2) { // •
+														var_ec_2 = ((var_e8_2 - var_dc_2) / (var_d8_2 - var_dc_2) * var_ec_2);
+													}
+													
+													float x87_r5_80 = var_70_1 * light->intensity * var_ec_2;
+													vertex[6] += x87_r5_80 * light->color_r * diffuse_color_r;
+													vertex[7] += x87_r5_80 * light->color_g * diffuse_color_g;
+													vertex[8] += x87_r5_80 * light->color_b * diffuse_color_b;
 												}
-												
-												float x87_r5_80 = var_70_1 * light->intensity * var_ec_2;
-												vertex[6] += x87_r5_80 * light->color_r * diffuse_color_r;
-												vertex[7] += x87_r5_80 * light->color_g * diffuse_color_g;
-												vertex[8] += x87_r5_80 * light->color_b * diffuse_color_b;
 											}
 										}
 									}
+
 								} else if (type == 2) {
 									x87_r5_56 = vertexWorldNormal[2] * light->dir_z + vertexWorldNormal[1] * light->dir_y + vertexWorldNormal[0] * light->dir_x;
 									if (x87_r5_56 > 0f) { // •
