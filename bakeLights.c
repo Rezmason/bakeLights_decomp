@@ -41,13 +41,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 					// float x87_r6_79 = 1f;
 					
 					if (shader) {
-						float x87_r5_13 = shader->luminance;
-						float temp2_1 = 0f;
-						x87_r5_13 - temp2_1;
-						int32_t eax_5;
-						eax_5 = (x87_r5_13 < temp2_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_13, temp2_1) ? 1 : 0) << 0xa | (x87_r5_13 == temp2_1 ? 1 : 0) << 0xe | 0x3000;
-						
-						if (*(uint8_t*)((char*)eax_5)[1] & 0x40) {
+						if (shader->luminance == 0f) {
 							float x87_r5_14 = shader->blendAmount;
 							float temp3_1 = 1f;
 							x87_r5_14 - temp3_1;
@@ -93,30 +87,15 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 								float vertexWorldNormal[3];
 								transformNormalToWorld(&transform, &vertex[3], &vertexWorldNormal);
 
-								float x87_r5_36 = object->scale_x;
-								float temp6_1 = 0f;
-								x87_r5_36 - temp6_1;
-								eax_10 = (x87_r5_36 < temp6_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_36, temp6_1) ? 1 : 0) << 0xa | (x87_r5_36 == temp6_1 ? 1 : 0) << 0xe | 0x3000;
-								
-								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
+								if (object->scale_x != 0f) {
 									vertexWorldNormal[0] = (vertexWorldNormal[0] / fabsl(object->scale_x));
 								}
 								
-								float x87_r5_40 = object->scale_y;
-								float temp7_1 = 0f;
-								x87_r5_40 - temp7_1;
-								eax_10 = (x87_r5_40 < temp7_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_40, temp7_1) ? 1 : 0) << 0xa | (x87_r5_40 == temp7_1 ? 1 : 0) << 0xe | 0x3000;
-								
-								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
+								if (object->scale_y != 0f) {
 									vertexWorldNormal[1] = (vertexWorldNormal[1] / fabsl(object->scale_y));
 								}
 								
-								float x87_r5_44 = object->scale_z;
-								float temp8_1 = 0f;
-								x87_r5_44 - temp8_1;
-								eax_10 = (x87_r5_44 < temp8_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_44, temp8_1) ? 1 : 0) << 0xa | (x87_r5_44 == temp8_1 ? 1 : 0) << 0xe | 0x3000;
-								
-								if (!(*(uint8_t*)((char*)eax_10)[1] & 0x40)) {
+								if (object->scale_z != 0f) {
 									vertexWorldNormal[2] = (vertexWorldNormal[2] / fabsl(object->scale_z));
 								}
 								
@@ -131,12 +110,9 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									float x87_r4_64 = light->pos_y - vertexWorldPosition[1];
 									float x87_r3_19 = light->pos_z - vertexWorldPosition[2];
 									float x87_r2_16 = x87_r3_19 * x87_r3_19 + x87_r4_64 * x87_r4_64 + x87_r5_84 * x87_r5_84;
-									float temp10_1 = 0f;
-									x87_r2_16 - temp10_1;
-									eax_10 = (x87_r2_16 < temp10_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_16, temp10_1) ? 1 : 0) << 0xa | (x87_r2_16 == temp10_1 ? 1 : 0) << 0xe | 0x1000;
 									float x87_r3_20;
 									
-									if (*(uint8_t*)((char*)eax_10)[1] & 0x40) {
+									if (x87_r2_16 == 0f) {
 										x87_r3_20 = x87_r2_16;
 										x87_r2_5 = 0f;
 									} else {
@@ -186,12 +162,9 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									float x87_r4_46 = light->pos_y - vertexWorldPosition[1];
 									float x87_r3_13 = light->pos_z - vertexWorldPosition[2];
 									float x87_r2_4 = x87_r3_13 * x87_r3_13 + x87_r4_46 * x87_r4_46 + x87_r5_63 * x87_r5_63;
-									float temp12_1 = 0f;
-									x87_r2_4 - temp12_1;
-									eax_10 = (x87_r2_4 < temp12_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_4, temp12_1) ? 1 : 0) << 0xa | (x87_r2_4 == temp12_1 ? 1 : 0) << 0xe | 0x1000;
 									float x87_r3_14;
 									
-									if (*(uint8_t*)((char*)eax_10)[1] & 0x40) {
+									if (x87_r2_4 == 0f) {
 										x87_r3_14 = x87_r2_4;
 										x87_r2_5 = 0f;
 									} else {
