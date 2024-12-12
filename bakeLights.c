@@ -122,22 +122,14 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										label_412ac7:
 										// x87_r6_79 = x87_r2_5;
 									} else {
-										float temp16_1 = light->attenStart;
-										x87_r2_5 - temp16_1;
-										eax_10 = (x87_r2_5 < temp16_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp16_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp16_1 ? 1 : 0) << 0xe | 0x1000;
-										
-										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
+										if (x87_r2_5 <= light->attenStart) { // •
 											x87_r3_20 = x87_r2_5;
 										} else {
 											var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
 										}
 										
 										x87_r5_56 = x87_r3_20 * vertexWorldNormal[2] + x87_r4_64 * vertexWorldNormal[1] + x87_r5_84 * vertexWorldNormal[0];
-										float temp19_1 = 0f;
-										x87_r5_56 - temp19_1;
-										eax_10 = (x87_r5_56 < temp19_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp19_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp19_1 ? 1 : 0) << 0xe | 0x2800;
-										
-										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
+										if (x87_r5_56 <= 0f) { // •
 											// x87_r6_79 = x87_r5_56;
 										} else {
 											float x87_r5_87 = x87_r5_56 * light->intensity * var_ec_2;
@@ -170,11 +162,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										goto label_412ac7;
 									}
 									
-									float temp18_1 = light->attenStart;
-									x87_r2_5 - temp18_1;
-									eax_10 = (x87_r2_5 < temp18_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp18_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp18_1 ? 1 : 0) << 0xe | 0x1000;
-									
-									if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
+									if (x87_r2_5 <= light->attenStart) { // •
 										x87_r3_14 = x87_r2_5;
 									} else {
 										var_ec_2 = (1f - (x87_r2_5 - light->attenStart) / (light->attenEnd - light->attenStart));
@@ -182,20 +170,12 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									
 									float x87_r2_12 = x87_r3_14 * vertexWorldNormal[2] + x87_r4_46 * vertexWorldNormal[1] + x87_r5_63 * vertexWorldNormal[0];
 									float var_70_1 = x87_r2_12;
-									float temp20_1 = 0f;
-									x87_r2_12 - temp20_1;
-									eax_10 = (x87_r2_12 < temp20_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_12, temp20_1) ? 1 : 0) << 0xa | (x87_r2_12 == temp20_1 ? 1 : 0) << 0xe | 0x1800;
-									
-									if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
+									if (x87_r2_12 <= 0f) { // •
 										// x87_r6_79 = x87_r3_14;
 									} else {
 										float x87_r5_65 = x87_r3_14 * light->dir_z + x87_r4_46 * light->dir_y + x87_r5_63 * light->dir_x;
 										float var_e8_2 = x87_r5_65;
-										float temp21_1 = 0f;
-										x87_r5_65 - temp21_1;
-										eax_10 = (x87_r5_65 < temp21_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_65, temp21_1) ? 1 : 0) << 0xa | (x87_r5_65 == temp21_1 ? 1 : 0) << 0xe | 0x3000;
-										
-										if (!(*(uint8_t*)((char*)eax_10)[1] & 0x41)) {
+										if (!(x87_r5_65 <= 0f)) { // •
 											float st0_5;
 											bool c2_16;
 											st0_5 = __fcos(light->penumbra * 0.0174532924f);
@@ -204,12 +184,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 											bool c2_17;
 											st0_6 = __fcos(light->umbra * 0.0174532924f);
 											float var_d8_2 = st0_6;
-											float x87_r5_72 = var_e8_2;
-											float temp22_1 = var_dc_2;
-											x87_r5_72 - temp22_1;
-											eax_10 = (x87_r5_72 < temp22_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_72, temp22_1) ? 1 : 0) << 0xa | (x87_r5_72 == temp22_1 ? 1 : 0) << 0xe | 0x3000;
-											
-											if (!(*(uint8_t*)((char*)eax_10)[1] & 0x41)) {
+											if (!(var_e8_2 <= var_dc_2)) { // •
 												if (var_e8_2 < var_d8_2) { // •
 													var_ec_2 = ((var_e8_2 - var_dc_2) / (var_d8_2 - var_dc_2) * var_ec_2);
 												}
@@ -228,11 +203,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									
 									if (type == 2) {
 										x87_r5_56 = vertexWorldNormal[2] * light->dir_z + vertexWorldNormal[1] * light->dir_y + vertexWorldNormal[0] * light->dir_x;
-										float temp15_1 = 0f;
-										x87_r5_56 - temp15_1;
-										eax_10 = (x87_r5_56 < temp15_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_56, temp15_1) ? 1 : 0) << 0xa | (x87_r5_56 == temp15_1 ? 1 : 0) << 0xe | 0x2800;
-										
-										if (*(uint8_t*)((char*)eax_10)[1] & 0x41) {
+										if (x87_r5_56 <= 0f) { // •
 											// x87_r6_79 = x87_r5_56;
 										} else {
 											float var_7c_1 = (x87_r5_56 * light->color_g * diffuse_color_g);
