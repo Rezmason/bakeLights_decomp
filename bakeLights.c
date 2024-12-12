@@ -86,18 +86,6 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 								float vertexWorldNormal[3];
 								transformNormalToWorld(&transform, &vertex[3], &vertexWorldNormal);
 
-								if (object->scale_x != 0f) {
-									vertexWorldNormal[0] = (vertexWorldNormal[0] / fabsl(object->scale_x));
-								}
-								
-								if (object->scale_y != 0f) {
-									vertexWorldNormal[1] = (vertexWorldNormal[1] / fabsl(object->scale_y));
-								}
-								
-								if (object->scale_z != 0f) {
-									vertexWorldNormal[2] = (vertexWorldNormal[2] / fabsl(object->scale_z));
-								}
-								
 								float vertexWorldPosition[3];
 								transformPositionToWorld(&transform, &vertex[0], &vertexWorldPosition);
 
@@ -173,16 +161,10 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									if (x87_r2_12 > 0f) {
 										float x87_r5_65 = x87_r3_14 * light->dir_z + x87_r4_46 * light->dir_y + x87_r5_63 * light->dir_x;
 										float var_e8_2 = x87_r5_65;
-										if (!(x87_r5_65 <= 0f)) { // •
-											float st0_5;
-											bool c2_16;
-											st0_5 = __fcos(light->penumbra * 0.0174532924f);
-											float var_dc_2 = st0_5;
-											float st0_6;
-											bool c2_17;
-											st0_6 = __fcos(light->umbra * 0.0174532924f);
-											float var_d8_2 = st0_6;
-											if (!(var_e8_2 <= var_dc_2)) { // •
+										if (x87_r5_65 > 0f) {
+											float var_dc_2 = __fcos(light->penumbra * PI / 180f);
+											float var_d8_2 = __fcos(light->umbra * PI / 180f);
+											if (var_e8_2 > var_dc_2) {
 												if (var_e8_2 < var_d8_2) { // •
 													var_ec_2 = ((var_e8_2 - var_dc_2) / (var_d8_2 - var_dc_2) * var_ec_2);
 												}
