@@ -38,7 +38,6 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 					float ambient_color_g = 1f;
 					float ambient_color_b = 1f;
 					struct Shader* shader = *(uint32_t*)((char*)ecx_3 + 0x14);
-					// float x87_r6_79 = 1f;
 					
 					if (shader) {
 						if (shader->luminance == 0f) {
@@ -134,15 +133,11 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										}
 										
 										x87_r5_56 = x87_r3_20 * vertexWorldNormal[2] + x87_r4_64 * vertexWorldNormal[1] + x87_r5_84 * vertexWorldNormal[0];
-										if (x87_r5_56 <= 0f) { // •
-											// x87_r6_79 = x87_r5_56;
-										} else {
+										if (x87_r5_56 > 0f) {
 											float x87_r5_87 = x87_r5_56 * light->intensity * var_ec_2;
-											float var_7c_3 = (x87_r5_87 * light->color_g * diffuse_color_g);
-											float x87_r5_89 = x87_r5_87 * light->color_b * diffuse_color_b;
-											vertex[6] = ((x87_r5_87 * light->color_r * diffuse_color_r) + vertex[6]);
-											vertex[7] = (var_7c_3 + vertex[7]);
-											vertex[8] = (x87_r5_89 + vertex[8]);
+											vertex[6] += x87_r5_87 * light->color_r * diffuse_color_r;
+											vertex[7] += x87_r5_87 * light->color_g * diffuse_color_g;
+											vertex[8] += x87_r5_87 * light->color_b * diffuse_color_b;
 										}
 									}
 								} else if (type == 1) {
@@ -175,9 +170,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 									
 									float x87_r2_12 = x87_r3_14 * vertexWorldNormal[2] + x87_r4_46 * vertexWorldNormal[1] + x87_r5_63 * vertexWorldNormal[0];
 									float var_70_1 = x87_r2_12;
-									if (x87_r2_12 <= 0f) { // •
-										// x87_r6_79 = x87_r3_14;
-									} else {
+									if (x87_r2_12 > 0f) {
 										float x87_r5_65 = x87_r3_14 * light->dir_z + x87_r4_46 * light->dir_y + x87_r5_63 * light->dir_x;
 										float var_e8_2 = x87_r5_65;
 										if (!(x87_r5_65 <= 0f)) { // •
@@ -195,24 +188,18 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 												}
 												
 												float x87_r5_80 = var_70_1 * light->intensity * var_ec_2;
-												float var_7c_2 = (x87_r5_80 * light->color_g * diffuse_color_g);
-												float x87_r5_82 = x87_r5_80 * light->color_b * diffuse_color_b;
-												vertex[6] = ((x87_r5_80 * light->color_r * diffuse_color_r) + vertex[6]);
-												vertex[7] = (var_7c_2 + vertex[7]);
-												vertex[8] = (x87_r5_82 + vertex[8]);
+												vertex[6] += x87_r5_80 * light->color_r * diffuse_color_r;
+												vertex[7] += x87_r5_80 * light->color_g * diffuse_color_g;
+												vertex[8] += x87_r5_80 * light->color_b * diffuse_color_b;
 											}
 										}
 									}
 								} else if (type == 2) {
 									x87_r5_56 = vertexWorldNormal[2] * light->dir_z + vertexWorldNormal[1] * light->dir_y + vertexWorldNormal[0] * light->dir_x;
-									if (x87_r5_56 <= 0f) { // •
-										// x87_r6_79 = x87_r5_56;
-									} else {
-										float var_7c_1 = (x87_r5_56 * light->color_g * diffuse_color_g);
-										float var_78_1 = (x87_r5_56 * light->color_b * diffuse_color_b);
-										vertex[6] = (x87_r5_56 * light->color_r * diffuse_color_r + vertex[6]);
-										vertex[7] = (var_7c_1 + vertex[7]);
-										vertex[8] = (var_78_1 + vertex[8]);
+									if (x87_r5_56 > 0f) { // •
+										vertex[6] += x87_r5_56 * light->color_r * diffuse_color_r;
+										vertex[7] += x87_r5_56 * light->color_g * diffuse_color_g;
+										vertex[8] += x87_r5_56 * light->color_b * diffuse_color_b;
 									}
 								}
 							}
