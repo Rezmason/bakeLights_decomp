@@ -42,12 +42,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 					
 					if (shader) {
 						if (shader->luminance == 0f) {
-							float x87_r5_14 = shader->blendAmount;
-							float temp3_1 = 1f;
-							x87_r5_14 - temp3_1;
-							eax_5 = (x87_r5_14 < temp3_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_14, temp3_1) ? 1 : 0) << 0xa | (x87_r5_14 == temp3_1 ? 1 : 0) << 0xe | 0x3000;
-							
-							if (*(uint8_t*)((char*)eax_5)[1] & 1) {
+							if (shader->blendAmount < 1f) { // •
 								label_41252d:
 								diffuse_color_r = shader->diffuse_color_r;
 								diffuse_color_g = shader->diffuse_color_g;
@@ -123,11 +118,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										x87_r3_20 = x87_r3_19 * x87_r1_18;
 									}
 									
-									float temp14_1 = light->attenEnd;
-									x87_r2_5 - temp14_1;
-									eax_10 = (x87_r2_5 < temp14_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp14_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp14_1 ? 1 : 0) << 0xe | 0x1000;
-									
-									if (!(*(uint8_t*)((char*)eax_10)[1] & 1)) {
+									if (!(x87_r2_5 < light->attenEnd)) { // •
 										label_412ac7:
 										// x87_r6_79 = x87_r2_5;
 									} else {
@@ -175,11 +166,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 										x87_r3_14 = x87_r3_13 * x87_r1_6;
 									}
 									
-									float temp17_1 = light->attenEnd;
-									x87_r2_5 - temp17_1;
-									eax_10 = (x87_r2_5 < temp17_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r2_5, temp17_1) ? 1 : 0) << 0xa | (x87_r2_5 == temp17_1 ? 1 : 0) << 0xe | 0x1000;
-									
-									if (!(*(uint8_t*)((char*)eax_10)[1] & 1)) {
+									if (!(x87_r2_5 < light->attenEnd)) { // •
 										goto label_412ac7;
 									}
 									
@@ -223,12 +210,7 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 											eax_10 = (x87_r5_72 < temp22_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_72, temp22_1) ? 1 : 0) << 0xa | (x87_r5_72 == temp22_1 ? 1 : 0) << 0xe | 0x3000;
 											
 											if (!(*(uint8_t*)((char*)eax_10)[1] & 0x41)) {
-												float x87_r5_73 = var_e8_2;
-												float temp23_1 = var_d8_2;
-												x87_r5_73 - temp23_1;
-												eax_10 = (x87_r5_73 < temp23_1 ? 1 : 0) << 8 | (FCMP_UO(x87_r5_73, temp23_1) ? 1 : 0) << 0xa | (x87_r5_73 == temp23_1 ? 1 : 0) << 0xe | 0x3000;
-												
-												if (*(uint8_t*)((char*)eax_10)[1] & 1) {
+												if (var_e8_2 < var_d8_2) { // •
 													var_ec_2 = ((var_e8_2 - var_dc_2) / (var_d8_2 - var_dc_2) * var_ec_2);
 												}
 												
