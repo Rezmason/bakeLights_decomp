@@ -35,9 +35,8 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 
 	int32_t edx_3 = (eax_3 - 1) * 0x18;
 	int32_t var_e4_2 = edx_3;
-	int32_t var_e0_3 = eax_3;
-				
-	while (true) {
+	
+	for (int32_t var_e0_3 = eax_3; var_e0_3 != 1; var_e0_3 -= 1) {
 		void* ecx_3 = &otherObjects_1[3]->name[edx_3];
 		struct Shader* shader = *(uint32_t*)((char*)ecx_3 + 0x14);
 
@@ -60,17 +59,14 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 		}
 		
 		void* edi_1 = (char*)ecx_3 + 0xc;
-		int32_t eax_9;
-		eax_9 = object->some_count | 1;
-		int32_t var_84_1 = 3;
-		object->some_count = eax_9;
-		bool cond_2_1;
+		object->some_count = object->some_count | 1;
 		
-		do {
-			int32_t eax_10;
-			eax_10 = *(uint16_t*)edi_1;
+		for(int32_t var_84_1 = 3; var_84_1 != 1; var_84_1 -= 1) {
+
+			int32_t eax_10 = *(uint16_t*)edi_1;
 			
 			if (!*(uint32_t*)((char*)eax_2 + (eax_10 << 2))) {
+				
 				float var_ec_2 = 1f;
 				int32_t edx_6 = otherObjects[2];
 				*(uint32_t*)((char*)eax_2 + (eax_10 << 2)) = 1;
@@ -184,19 +180,11 @@ void bakeLights(int32_t scxData, struct Object* object, struct Light* light, flo
 			}
 			
 			edi_1 += 2;
-			cond_2_1 = var_84_1 != 1;
-			var_84_1 -= 1;
-		} while (cond_2_1);
-		
-		ecx_1 = var_e4_2 - 0x18;
-		bool cond_3_1 = var_e0_3 != 1;
-		var_e4_2 = ecx_1;
-		var_e0_3 -= 1;
-		
-		if (!cond_3_1) {
-			break;
 		}
 		
+		ecx_1 = var_e4_2 - 0x18;
+		var_e4_2 = ecx_1;
+
 		edx_3 = var_e4_2;
 		otherObjects_1 = otherObjects;
 	}
