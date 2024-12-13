@@ -108,7 +108,7 @@ void bakeLights(int scxData, struct Object* object, struct Light* light, float* 
 							lightZ /= lightDistance;
 						}
 
-						if (lightDistance < light->attenEnd) {
+						if (lightDistance >= light->attenEnd) {
 							continue;
 						}
 
