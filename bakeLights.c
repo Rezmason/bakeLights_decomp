@@ -70,11 +70,16 @@ void bakeLights(int scxData, struct Object* object, struct Light* light, float* 
 				*(uint*)((char*)eax_2 + (eax_10 << 2)) = 1;
 				float* vertex = otherObjects[2] + eax_10 * 0x38;
 				int type = light->type;
+
+				float base_color_r = diffuse_color_r;
+				float base_color_g = diffuse_color_g;
+				float base_color_b = diffuse_color_b;
+				float magnitude = 1f;
 				
 				if (type == 3) {
-					vertex[6] += ambient_color_r * light->color_r;
-					vertex[7] += ambient_color_g * light->color_g;
-					vertex[8] += ambient_color_b * light->color_b;
+					base_color_r = ambient_color_r;
+					base_color_g = ambient_color_g;
+					base_color_b = ambient_color_b;
 				} else {
 					
 					float vertexWorldNormal[3];
@@ -84,12 +89,7 @@ void bakeLights(int scxData, struct Object* object, struct Light* light, float* 
 					transformPositionToWorld(&transform, &vertex[0], &vertexWorldPosition);
 
 					if (type == 2) {
-						float magnitude = vertexWorldNormal[2] * light->dir_z + vertexWorldNormal[1] * light->dir_y + vertexWorldNormal[0] * light->dir_x;
-						if (magnitude > 0f) {
-							vertex[6] += magnitude * light->color_r * diffuse_color_r;
-							vertex[7] += magnitude * light->color_g * diffuse_color_g;
-							vertex[8] += magnitude * light->color_b * diffuse_color_b;
-						}
+						magnitude = vertexWorldNormal[2] * light->dir_z + vertexWorldNormal[1] * light->dir_y + vertexWorldNormal[0] * light->dir_x;
 					} else {
 
 						float lightX = light->pos_x - vertexWorldPosition[0];
@@ -99,7 +99,7 @@ void bakeLights(int scxData, struct Object* object, struct Light* light, float* 
 						float lightDistance;
 						
 						if (lightDistSquared == 0f) {
-							lightZ = 0f;
+							// lightZ = 0f;
 							lightDistance = 0f;
 						} else {
 							lightDistance = sqrtl(lightDistSquared);
@@ -117,14 +117,9 @@ void bakeLights(int scxData, struct Object* object, struct Light* light, float* 
 							attenuation = (1f - (lightDistance - light->attenStart) / (light->attenEnd - light->attenStart));
 						}
 
-						float magnitude = lightZ * vertexWorldNormal[2] + lightY * vertexWorldNormal[1] + lightX * vertexWorldNormal[0];
+						magnitude = lightZ * vertexWorldNormal[2] + lightY * vertexWorldNormal[1] + lightX * vertexWorldNormal[0];
 						
-						if (type == 0) {
-							magnitude *= light->intensity * attenuation;
-							if (magnitude <= 0f) {
-								continue;
-							}
-						} else if (type == 1) {
+						if (type == 1) {
 							if (magnitude <= 0f) {
 								continue;
 							}
@@ -144,14 +139,16 @@ void bakeLights(int scxData, struct Object* object, struct Light* light, float* 
 								attenuation *= (angle - penumbra) / (umbra - penumbra);
 							}
 							
-							magnitude *= light->intensity * attenuation;
 						}
-
-						vertex[6] += magnitude * light->color_r * diffuse_color_r;
-						vertex[7] += magnitude * light->color_g * diffuse_color_g;
-						vertex[8] += magnitude * light->color_b * diffuse_color_b;
+						magnitude *= light->intensity * attenuation;
 					}
 				}
+				if (magnitude <= 0f) {
+					continue;
+				}
+				vertex[6] += magnitude * light->color_r * base_color_r;
+				vertex[7] += magnitude * light->color_g * base_color_g;
+				vertex[8] += magnitude * light->color_b * base_color_b;
 			}
 			
 			edi_1 += 2;
